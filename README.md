@@ -11,13 +11,16 @@ If you don't want to build you can pull pre built images from docker hub (see ne
 
 Be in hadoop_spark_app directory to run docker-compose commands without needing to pass the path to yml file
 
+```
 cd hadoop_spark_app
 docker-compose build
+```
 
 # Pull from docker hub
 
 To use prebuilt images pull them from docker hub and re tag them
 
+```
 docker pull vinaytejakoona/base:latest
 docker pull vinaytejakoona/master:latest
 docker pull vinaytejakoona/worker:latest
@@ -25,6 +28,7 @@ docker pull vinaytejakoona/worker:latest
 docker tag vinaytejakoona/base:latest base:lastest
 docker tag vinaytejakoona/master:latest master:latest
 docker tag vinaytejakoona/worker:latest worker:latest
+```
 
 # Starting services
 
@@ -55,10 +59,10 @@ With below command, present working directory is bind mounted to base container 
 docker run -it --name base --network hadoopsparkapp_dockernet -p 4040:4040 -v $(pwd)/.:/local_mount base bash
 
 if container already exists but it is not running use below commands
-
+```
 docker restart base 
 docker exec -it base bash
-
+```
 # Put data on hdfs
 
 hdfs dfs -put sampledata.txt /
