@@ -65,18 +65,20 @@ docker exec -it base bash
 ```
 # Put data on hdfs
 
+```
+cd local_mount
+
 hdfs dfs -put sampledata.txt /
 
 hdfs dfs -ls /
 
 hdfs dfs -cat /sampledata.txt
-
+```
 
 # Submit spark script to spark master
 
 The script test_spark.py reads text data in hdfs and writes word counts to hdfs
 ```
-cd local_mount
 
 $SPARK_HOME/bin/spark-submit --conf spark.executor.memory=500M --conf spark.executor.cores=1 --master spark://master:7077  test_spark.py
 ```
