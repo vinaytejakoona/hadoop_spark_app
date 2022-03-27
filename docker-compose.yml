@@ -1,0 +1,38 @@
+version: "3"
+services:
+  base:
+    build: 
+      context: ./base/
+    image: base:latest
+    networks:
+      - dockernet
+  master:
+    build:
+      context: ./master/
+    image: master:latest
+    container_name: master
+    ports:
+      - "8080:8080"
+      - "9870:9870"
+      - "8088:8088"
+    networks:
+      - dockernet
+    depends_on:
+      - base
+  worker:
+    build:
+      context: ./worker/
+      args:
+      - CORES=2
+      - MEMORY=1G
+    image: worker:latest
+    ports:
+      - "8081"
+      - "9864"
+    networks:
+      - dockernet
+    depends_on:
+      - master
+networks:
+  dockernet:
+    driver: bridge
