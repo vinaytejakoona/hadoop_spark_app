@@ -88,11 +88,13 @@ you can check output using  : hdfs dfs -cat /output/part-*
 
 # UI links
 
+docker-compose ps will show master container and its ip address. 
+
 | service | link |
 | ------  | ------ |
-| spark master    |  https://<master-container-ip>:8080 |
-| hadoop namenode |  https:/<master-container-ip>:9870  |
-| yarn            |  https:/<master-container-ip>:8088  |
+| spark master    |  https://[master-container-ip]:8080  |
+| hadoop namenode |  https://[master-container-ip]:9870  |
+| yarn            |  https://[master-container-ip]:8088  |
 
 
 # Shutdown containers
@@ -100,7 +102,6 @@ you can check output using  : hdfs dfs -cat /output/part-*
 Be in hadoop_spark_app directory
 
 ```
-cd ..  
 docker-compose down
 
 ```
